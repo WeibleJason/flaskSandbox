@@ -9,6 +9,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return '<h1>Hello World!</h1>'
+
+
+app.add_url_rule('/', 'index', index)
+
+
+@app.route('/matplotlib')
+def matplotlib():
     # Generate the figure **without using pyplot**.
     fig = Figure()
     ax = fig.subplots()
@@ -21,8 +29,4 @@ def index():
     return f"<img src='data:image/png;base64,{data}'/>"
 
 
-    return '<h1>Hello World!</h1>'
-
-
-app.add_url_rule('/' 'index', index)
-
+app.add_url_rule('/matplotlib', 'matplotlib', matplotlib)
